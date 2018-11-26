@@ -9,5 +9,6 @@ namespace SampleMiddleware.Services
     public interface IRestaurantData
     {
         IEnumerable<Restaurant> GetAll();
+        Restaurant GetById(int id);
     }
 }

@@ -9,7 +9,6 @@ namespace SampleMiddleware.Services
     public class InMemoryRestaurantData : IRestaurantData
     {
         private List<Restaurant> restaurants;
-
         public InMemoryRestaurantData()
         {
             restaurants = new List<Restaurant>()
@@ -24,6 +23,16 @@ namespace SampleMiddleware.Services
             return restaurants.OrderBy(r=>r.Name);
         }
 
-
+        public Restaurant GetById(int id)
+        {
+            var result = (from r in restaurants
+                          where r.Id == id 
+                          select r).SingleOrDefault();
+            //var result = restaurants.Where(r => r.Id == id).SingleOrDefault();
+            if (result == null)
+                 throw new Exception("Data tidak ditemukan");
+            
+            return result;
+        }
     }
 }

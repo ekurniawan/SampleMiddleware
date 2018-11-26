@@ -19,5 +19,11 @@ namespace SampleMiddleware.Controllers
             var models = _resto.GetAll();
             return View(models);
         }
+
+        public IActionResult Details(int id)
+        {
+            var model = _resto.GetById(id);
+            return View(model);
+        }
     }
 }
