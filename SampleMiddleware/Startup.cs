@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,12 +33,21 @@ namespace SampleMiddleware
 
             app.UseStaticFiles();
             //{controller=Home}/{action=Index}
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
+            app.UseMvc(ConfigureRoutes);
 
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync($"Data: {greeter.GetMessageOfTheDay()}");
             });
+        }
+
+        private void ConfigureRoutes(IRouteBuilder obj)
+        {
+            obj.MapRoute(name: "blog", template: "blog/{article}",
+                defaults: new { controller = "Home", action = "ReadArticle" });
+            obj.MapRoute("Default", 
+                "{controller=Home}/{action=About}/{id?}");
         }
     }
 }

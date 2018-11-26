@@ -12,5 +12,15 @@ namespace SampleMiddleware.Controllers
         {
             return Content("Hello from Home Controller");
         }
+
+        public IActionResult ReadArticle(string article)
+        {
+            return Content($"Anda mengakses artikel: {article}");
+        }
+
+        public IActionResult About()
+        {
+            return Content("Hello from About");
+        }
     }
 }
