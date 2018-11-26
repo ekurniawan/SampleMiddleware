@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SampleMiddleware.Models;
 
 namespace SampleMiddleware.Controllers
 {
@@ -11,7 +12,8 @@ namespace SampleMiddleware.Controllers
         //
         public IActionResult Index()
         {
-            return Content("Hello from Home Controller");
+            var model = new Restaurant { Id = 1, Name = "Sate Klathak Pak Bari" };
+            return View(model);
         }
 
         public IActionResult ReadArticle(string article)
