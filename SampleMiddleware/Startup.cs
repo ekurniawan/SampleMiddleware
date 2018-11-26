@@ -26,7 +26,7 @@ namespace SampleMiddleware
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Use(async (content, next) =>
+            /*app.Use(async (content, next) =>
             {
                 if (content.Request.Path.Value.Contains("home"))
                 {
@@ -38,9 +38,11 @@ namespace SampleMiddleware
                     await next.Invoke();
                     Debug.WriteLine("==After Run==");
                 }
-            });
+            });*/
 
+            app.UseMiddleware<LoggingMiddleware>();
             app.UseStaticFiles();
+
 
             app.Run(async (context) =>
             {
