@@ -8,6 +8,7 @@ namespace SampleMiddleware
 {
     public class Greeter : IGreeter
     {
+        //menambahkan Greeter
         private IConfiguration _config;
         public Greeter(IConfiguration config)
         {
