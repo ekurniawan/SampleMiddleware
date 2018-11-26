@@ -20,7 +20,7 @@ namespace SampleMiddleware.Services
         }
         public IEnumerable<Restaurant> GetAll()
         {
-            return restaurants.OrderBy(r=>r.Name);
+            return restaurants.OrderByDescending(r=>r.Name);
         }
 
         public Restaurant GetById(int id)
