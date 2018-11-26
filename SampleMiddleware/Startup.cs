@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -25,8 +26,25 @@ namespace SampleMiddleware
                 app.UseDeveloperExceptionPage();
             }
 
+            app.Use(async (content, next) =>
+            {
+                if (content.Request.Path.Value.Contains("home"))
+                {
+                    await content.Response.WriteAsync("Response to home");
+                }
+                else
+                {
+                    Debug.WriteLine("==Before Run==");
+                    await next.Invoke();
+                    Debug.WriteLine("==After Run==");
+                }
+            });
+
+            app.UseStaticFiles();
+
             app.Run(async (context) =>
             {
+                Debug.WriteLine("===During Run===");
                 await context.Response.WriteAsync("Hello World!");
             });
         }
