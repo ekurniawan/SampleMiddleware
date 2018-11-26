@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SampleMiddleware.Models.Restaurant>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Restaurant</title>
+</head>
+<body>
+    <ul>
+        @foreach (var resto in Model)
+        {
+            <li>@resto.Id - @resto.Name</li>
+        }
+    </ul>
+</body>
+</html>

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SampleMiddleware.Services;
 
 namespace SampleMiddleware
 {
@@ -19,6 +20,7 @@ namespace SampleMiddleware
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
             services.AddMvc();
         }
 
