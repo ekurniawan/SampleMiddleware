@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace SampleMiddleware.Models
 {
+    //
     public class Restaurant
     {
         public int Id { get; set; }
