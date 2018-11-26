@@ -18,6 +18,7 @@ namespace SampleMiddleware
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,6 +31,8 @@ namespace SampleMiddleware
             }
 
             app.UseStaticFiles();
+            //{controller=Home}/{action=Index}
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {
