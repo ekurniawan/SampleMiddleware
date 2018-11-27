@@ -1,17 +1,15 @@
 ﻿@model SampleMiddleware.Models.Restaurant
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="index.html">Home Page</a>
+    </li>
+    <li class="breadcrumb-item active">Home Page</li>
+</ol>
+<h1>Home Page</h1>
+<hr>
+<p>Id Restaurant: @Model.Id , Nama Resto:@Model.Name</p>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Restaurant</title>
-</head>
-<body>
-    <p>Id Restaurant: @Model.Id , Nama Resto:@Model.Name</p>
-</body>
-</html>

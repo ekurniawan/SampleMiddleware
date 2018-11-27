@@ -49,7 +49,7 @@ namespace SampleMiddleware
             obj.MapRoute(name: "blog", template: "blog/{article}",
                 defaults: new { controller = "Home", action = "ReadArticle" });
             obj.MapRoute("Default", 
-                "{controller=Home}/{action=About}/{id?}");
+                "{controller=Home}/{action=Index}/{id?}");
         }
     }
 }

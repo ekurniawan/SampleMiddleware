@@ -14,6 +14,7 @@ namespace SampleMiddleware.Controllers
         {
             _resto = resto;
         }
+
         public IActionResult Index()
         {
             var models = _resto.GetAll();
