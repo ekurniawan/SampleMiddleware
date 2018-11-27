@@ -32,8 +32,12 @@ namespace SampleMiddleware.Controllers
         {
             try
             {
-                _resto.Insert(resto);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _resto.Insert(resto);
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
             catch (Exception ex)
             {
