@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SampleMiddleware.Services
 {
+    //interface
     public interface IRestaurantData
     {
         IEnumerable<Restaurant> GetAll();
