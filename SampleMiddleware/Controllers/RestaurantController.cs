@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SampleMiddleware.Models;
 using SampleMiddleware.Services;
 
 namespace SampleMiddleware.Controllers
@@ -19,6 +20,27 @@ namespace SampleMiddleware.Controllers
         {
             var models = _resto.GetAll();
             return View(models);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Restaurant resto)
+        {
+            try
+            {
+                _resto.Insert(resto);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewData["Error"] = 
+                    $"<span class='alert alert-danger'>{ex.Message}</span>";
+                return View(resto);
+            }
         }
 
         public IActionResult Details(int id)
