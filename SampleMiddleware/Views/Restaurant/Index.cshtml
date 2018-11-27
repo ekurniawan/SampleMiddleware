@@ -1,22 +1,22 @@
 ﻿@model IEnumerable<SampleMiddleware.Models.Restaurant>
 
-@{
-    Layout = null;
-}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="index.html">Home Page</a>
+    </li>
+    <li class="breadcrumb-item active">Restaurant</li>
+</ol>
+<h1>Restaurant</h1>
+<hr>
+<table class="table table-striped">
+    @foreach (var resto in Model)
+    {
+        <tr>
+            <td>@resto.Id</td>
+            <td>@resto.Name</td>
+        </tr>
+    }
+</table>
+    
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Restaurant</title>
-</head>
-<body>
-    <ul>
-        @foreach (var resto in Model)
-        {
-            <li>@resto.Id - @resto.Name</li>
-        }
-    </ul>
-</body>
-</html>
