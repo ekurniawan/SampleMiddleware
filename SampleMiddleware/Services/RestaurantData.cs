@@ -68,8 +68,8 @@ namespace SampleMiddleware.Services
         {
             using (SqlConnection conn = new SqlConnection(GetConnStr()))
             {
-                string strSql = @"insert into Restaurant(Name) values(@Name)";
-                var param = new { Name = resto.Name };
+                string strSql = @"insert into Restaurant(JenisID,Name) values(@JenisID,@Name)";
+                var param = new { JenisID=resto.JenisID, Name = resto.Name };
                 try
                 {
                     conn.Execute(strSql, param);
