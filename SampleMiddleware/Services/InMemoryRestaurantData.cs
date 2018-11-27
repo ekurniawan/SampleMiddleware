@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using SampleMiddleware.Models;
 
 namespace SampleMiddleware.Services
-{
+{//
     public class InMemoryRestaurantData : IRestaurantData
     {
         private List<Restaurant> restaurants;
