@@ -23,7 +23,30 @@ namespace SampleMiddleware.Services
 
         public IEnumerable<Restaurant> GetAll()
         {
-            throw new NotImplementedException();
+            using(SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                var lstResto = new List<Restaurant>();
+                string strSql = @"select * from Restaurant order by Name asc";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        lstResto.Add(new Restaurant
+                        {
+                            Id = Convert.ToInt32(dr["Id"]),
+                            Name = dr["Name"].ToString()
+                        });
+                    }
+                }
+                dr.Close();
+                cmd.Dispose();
+                conn.Close();
+
+                return lstResto;
+            }
         }
 
         public Restaurant GetById(int id)
