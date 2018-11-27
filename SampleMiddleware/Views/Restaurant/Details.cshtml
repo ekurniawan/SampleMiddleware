@@ -1,17 +1,13 @@
 ﻿@model SampleMiddleware.Models.Restaurant
 
-@{
-    Layout = null;
-}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a asp-controller="Home" asp-action="Index">Home Page</a>
+    </li>
+    <li class="breadcrumb-item">Restaurant</li>
+    <li class="breadcrumb-item active">Detail Restaurant</li>
+</ol>
+<h1>Detail Restaurant</h1>
+<hr>
+<p>@Model.Id dan @Model.Name</p>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <p>@Model.Id dan @Model.Name</p>
-</body>
-</html>

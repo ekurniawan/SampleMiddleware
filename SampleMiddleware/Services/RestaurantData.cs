@@ -63,5 +63,45 @@ namespace SampleMiddleware.Services
                 return result;
             }
         }
+
+        public void Insert(Restaurant resto)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"insert into Restaurant(Name) values(@Name)";
+                var param = new { Name = resto.Name };
+                try
+                {
+                    conn.Execute(strSql, param);
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Message);
+                }
+            }
+        }
+
+        public void Update(Restaurant resto)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"update Restaurant set Name=@Name 
+                                  where Id=@Id";
+                var param = new { Name = resto.Name, Id = resto.Id };
+                try
+                {
+                    conn.Execute(strSql, param);
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Message);
+                }
+            }
+        }
+
+        public void Delete(Restaurant resto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

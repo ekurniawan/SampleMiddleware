@@ -2,7 +2,7 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="index.html">Home Page</a>
+        <a asp-controller="Home" asp-action="Index">Home Page</a>
     </li>
     <li class="breadcrumb-item active">Restaurant</li>
 </ol>
@@ -14,6 +14,7 @@
         <tr>
             <td>@resto.Id</td>
             <td>@resto.Name</td>
+            <td><a asp-action="Details" asp-route-id="@resto.Id">details</a></td>
         </tr>
     }
 </table>

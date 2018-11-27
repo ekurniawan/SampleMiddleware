@@ -18,6 +18,12 @@ namespace SampleMiddleware.Services
                 new Restaurant {Id=3,Name="Soto Kadipiro"}
             };
         }
+
+        public void Delete(Restaurant resto)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Restaurant> GetAll()
         {
             return restaurants.OrderByDescending(r=>r.Name);
@@ -33,6 +39,16 @@ namespace SampleMiddleware.Services
                  throw new Exception("Data tidak ditemukan");
             
             return result;
+        }
+
+        public void Insert(Restaurant resto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Restaurant resto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
