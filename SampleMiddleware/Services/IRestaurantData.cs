@@ -11,7 +11,7 @@ namespace SampleMiddleware.Services
     {
         IEnumerable<Restaurant> GetAll();
         Restaurant GetById(int id);
-
+        IEnumerable<Restaurant> GetAllWithJenis();
         void Insert(Restaurant resto);
         void Update(Restaurant resto);
         void Delete(Restaurant resto);

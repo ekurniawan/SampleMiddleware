@@ -29,6 +29,11 @@ namespace SampleMiddleware.Services
             return restaurants.OrderByDescending(r=>r.Name);
         }
 
+        public IEnumerable<Restaurant> GetAllWithJenis()
+        {
+            throw new NotImplementedException();
+        }
+
         public Restaurant GetById(int id)
         {
             var result = (from r in restaurants
