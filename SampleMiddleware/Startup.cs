@@ -20,7 +20,7 @@ namespace SampleMiddleware
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            services.AddScoped<IRestaurantData, RestaurantData>();
             services.AddMvc();
         }
 
