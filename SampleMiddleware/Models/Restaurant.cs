@@ -9,6 +9,7 @@ namespace SampleMiddleware.Models
     //menambahkan navigation property
     public class Restaurant
     {
+        [Key]
         public int Id { get; set; }
         public int? JenisID { get; set; }
         public string Name { get; set; }
