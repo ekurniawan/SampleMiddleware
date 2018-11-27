@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace SampleMiddleware.Data
 {
+    //dotnet ef migrations add <NamaMigration>
+    //dotnet ef database update
     public class RestaurantDbContext : DbContext
     {
         public RestaurantDbContext(DbContextOptions options):base(options)
