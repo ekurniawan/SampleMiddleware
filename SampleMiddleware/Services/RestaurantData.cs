@@ -55,7 +55,13 @@ namespace SampleMiddleware.Services
 
         public Restaurant GetById(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"select * from Restaurant where Id=@Id";
+                var param = new { Id = id };
+                var result = conn.QuerySingle<Restaurant>(strSql,param);
+                return result;
+            }
         }
     }
 }
