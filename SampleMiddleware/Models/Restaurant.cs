@@ -12,7 +12,6 @@ namespace SampleMiddleware.Models
         public int Id { get; set; }
         public int? JenisID { get; set; }
         public string Name { get; set; }
-
         public virtual Jenis Jenis { get; set; }
     }
 

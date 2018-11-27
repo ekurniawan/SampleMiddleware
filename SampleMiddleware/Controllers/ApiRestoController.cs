@@ -49,9 +49,26 @@ namespace SampleMiddleware.Controllers
         }
 
         // PUT: api/ApiResto/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public IActionResult Put([FromBody]Restaurant resto)
         {
+            var updateResto = Get(resto.Id);
+            try
+            {
+                if (updateResto != null)
+                {
+                    _resto.Update(resto);
+                    return Ok($"Data resto {resto.Name} berhasil diupdate");
+                }
+                else
+                {
+                    return BadRequest($"Data {resto.Name} tidak ditemukan");
+                }   
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error {ex.Message}");
+            }
         }
 
         // DELETE: api/ApiWithActions/5

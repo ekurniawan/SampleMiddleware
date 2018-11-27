@@ -85,9 +85,10 @@ namespace SampleMiddleware.Services
         {
             using (SqlConnection conn = new SqlConnection(GetConnStr()))
             {
-                string strSql = @"update Restaurant set Name=@Name 
+                string strSql = @"update Restaurant set JenisID=@JenisID, Name=@Name 
                                   where Id=@Id";
-                var param = new { Name = resto.Name, Id = resto.Id };
+                var param = new { JenisID=resto.JenisID,
+                    Name = resto.Name, Id = resto.Id };
                 try
                 {
                     conn.Execute(strSql, param);
