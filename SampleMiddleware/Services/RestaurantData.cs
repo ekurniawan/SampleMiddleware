@@ -114,5 +114,23 @@ namespace SampleMiddleware.Services
                 }
             }
         }
+
+        public IEnumerable<Restaurant> GetAllWithJenis()
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"select * from Restaurant left outer join Jenis 
+                                  on Restaurant.JenisID=Jenis.JenisID ";
+
+                var results = conn.Query<Restaurant, Jenis, Restaurant>(strSql, (r, j) =>
+                {
+                    r.Jenis = j;
+                    return r;
+                }, splitOn: "JenisID");
+
+                return results;
+            }
+
+        }
     }
 }
