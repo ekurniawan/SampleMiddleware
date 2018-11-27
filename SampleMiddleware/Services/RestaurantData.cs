@@ -101,7 +101,18 @@ namespace SampleMiddleware.Services
 
         public void Delete(Restaurant resto)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conn = new SqlConnection(GetConnStr()))
+            {
+                string strSql = @"delete Restaurant where Id=@Id";
+                try
+                {
+                    conn.Execute(strSql, new { Id = resto.Id });
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Message);
+                }
+            }
         }
     }
 }
