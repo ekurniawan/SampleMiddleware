@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace SampleMiddleware.Models
 {
-    //
+    //menambahkan navigation property
     public class Restaurant
     {
         public int Id { get; set; }
-
-        [Required]
+        public int? JenisID { get; set; }
         public string Name { get; set; }
+
+        public virtual Jenis Jenis { get; set; }
     }
 
+   
 }
