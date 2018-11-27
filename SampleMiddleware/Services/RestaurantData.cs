@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using SampleMiddleware.Models;
 using System.Data.SqlClient;
+using Dapper;
 
 namespace SampleMiddleware.Services
 {
@@ -25,7 +26,10 @@ namespace SampleMiddleware.Services
         {
             using(SqlConnection conn = new SqlConnection(GetConnStr()))
             {
-                var lstResto = new List<Restaurant>();
+                string strSql = @"select * from Restaurant order by Name asc";
+                var results = conn.Query<Restaurant>(strSql);
+                return results;
+                /*var lstResto = new List<Restaurant>();
                 string strSql = @"select * from Restaurant order by Name asc";
                 SqlCommand cmd = new SqlCommand(strSql, conn);
                 conn.Open();
@@ -45,7 +49,7 @@ namespace SampleMiddleware.Services
                 cmd.Dispose();
                 conn.Close();
 
-                return lstResto;
+                return lstResto;*/
             }
         }
 
