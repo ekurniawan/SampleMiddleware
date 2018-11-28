@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SampleMiddleware.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace SampleMiddleware.Data
 {
     //dotnet ef migrations add <NamaMigration>
     //dotnet ef database update
-    public class RestaurantDbContext : DbContext
+    public class RestaurantDbContext : IdentityDbContext
     {
         public RestaurantDbContext(DbContextOptions options):base(options)
         {

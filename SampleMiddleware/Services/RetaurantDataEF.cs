@@ -17,7 +17,16 @@ namespace SampleMiddleware.Services
         }
         public void Delete(Restaurant resto)
         {
-            throw new NotImplementedException();
+            var data = GetById(resto.Id);
+            try
+            {
+                _db.Remove(data);
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public IEnumerable<Restaurant> GetAll()
@@ -74,6 +83,7 @@ namespace SampleMiddleware.Services
                 data.Name = resto.Name;
                 data.JenisID = resto.JenisID;
                 _db.SaveChanges();
+
             }
             catch (Exception ex)
             {
