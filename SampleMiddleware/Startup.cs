@@ -27,7 +27,8 @@ namespace SampleMiddleware
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
-            services.AddScoped<IRestaurantData, RestaurantData>();
+            //services.AddScoped<IRestaurantData, RestaurantData>();
+            services.AddScoped<IRestaurantData, RestaurantDataEF>();
 
             services.AddDbContext<RestaurantDbContext>(options =>
             options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));

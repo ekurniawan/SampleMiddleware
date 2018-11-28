@@ -18,7 +18,7 @@ namespace SampleMiddleware.Controllers
 
         public IActionResult Index()
         {
-            var models = _resto.GetAllWithJenis();
+            var models = _resto.GetAll();
             return View(models);
         }
 
