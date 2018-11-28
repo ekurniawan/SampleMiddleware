@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,11 @@ namespace SampleMiddleware
 
             services.AddDbContext<RestaurantDbContext>(options =>
             options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultUI().AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<RestaurantDbContext>();
+
             services.AddMvc();
         }
 
