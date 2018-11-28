@@ -23,9 +23,9 @@ namespace SampleMiddleware.Services
         public IEnumerable<Restaurant> GetAll()
         {
             //var results = _db.Restaurant.OrderBy(r => r.Name);
-            var results = from r in _db.Restaurant
+            var results = (from r in _db.Restaurant
                           orderby r.Name ascending
-                          select r;
+                          select r).AsNoTracking();
 
             return results;
         }
@@ -45,17 +45,40 @@ namespace SampleMiddleware.Services
 
         public Restaurant GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = (from r in _db.Restaurant
+                          where r.Id == id
+                          select r).SingleOrDefault();
+            if (result == null)
+                throw new Exception("Data tidak ditemukan");
+            return result;
         }
 
         public void Insert(Restaurant resto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _db.Restaurant.Add(resto);
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void Update(Restaurant resto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var data = GetById(resto.Id);
+                data.Name = resto.Name;
+                data.JenisID = resto.JenisID;
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
