@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SampleMiddleware.Data;
 using SampleMiddleware.Models;
 
@@ -31,7 +32,10 @@ namespace SampleMiddleware.Services
 
         public IEnumerable<Restaurant> GetAllWithJenis()
         {
-            throw new NotImplementedException();
+            var results = from r in _db.Restaurant.Include("Jenis")
+                          orderby r.Name descending
+                          select r;
+            return results;
         }
 
         //public IEnumerable<Restaurant> GetAllWithJenis()
